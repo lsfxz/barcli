@@ -1,7 +1,9 @@
-var chalk = require("chalk");
+// var chalk = require("chalk");
+const ctx = require("chalk");
+const chalk = new ctx.constructor({level: 3});
 var barclis = [];
 var currentPosition = 0;
-var colors = ["red", "green", "yellow", "blue", "magenta", "cyan", "white"];
+var colors = ["indianred", "palegreen", "gold", "skyblue", "orchid", "lightcyan", "white"];
 var maxLabelLength = 0;
 var maxValueLength = 0;
 var windowWidth = process.stdout.columns || 80;
@@ -140,18 +142,18 @@ Barcli.prototype.update = function(data) {
   }
 
   // Output the label
-  process.stdout.write(chalk[this.color](this.label+": "));
-  process.stdout.write(chalk.white("|"));
+  process.stdout.write(chalk.keyword([this.color])(this.label+": "));
+  process.stdout.write(chalk.keyword('white')("|"));
     
   // Ouput the bar
   if (type === "number") {
-    process.stdout.write(chalk[this.color](bar));
+    process.stdout.write(chalk.keyword([this.color])(bar));
   } else {
-    process.stdout.write(chalk[this.color](bar));
+    process.stdout.write(chalk.keyword([this.color])(bar));
   }
 
-  process.stdout.write(chalk[this.color](postbar));
-  process.stdout.write(chalk.white("| "));
+  process.stdout.write(chalk.keyword([this.color])(postbar));
+  process.stdout.write(chalk.keyword('white')("| "));
 
   if (type === "number") {
     // Output the raw data value in red if outside the range
@@ -177,7 +179,7 @@ Barcli.prototype.update = function(data) {
     if (raw === null) {
       process.stdout.write(chalk.red(prepend + "null" + append));
     } else {
-      process.stdout.write(chalk[color](prepend + String(raw.toFixed(this.precision)) + append));
+      process.stdout.write(chalk.keyword([color])(prepend + String(raw.toFixed(this.precision)) + append));
     }
   }
 

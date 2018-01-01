@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/dtex/barcli",
   "dependencies": {
-    "chalk": "^1.0.0"
+    "chalk": "^2.2.0"
   }
 }
